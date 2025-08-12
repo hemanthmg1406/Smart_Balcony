@@ -1,0 +1,24 @@
+default_config:
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+mqtt:
+  sensor:
+    - name: "Balcony Soil Moisture"
+      state_topic: "balcony/moisture"
+      unit_of_measurement: "%"
+
+  switch:
+    - name: "Balcony Pump"
+      command_topic: "balcony/commands"
+      state_topic: "balcony/pump_status"
+      payload_on: "ON"
+      payload_off: "OFF"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: true
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
